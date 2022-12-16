@@ -1,0 +1,49 @@
+<%= form_for([@tutor, @meeting]) do |form| %>
+  <% if meeting.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(meeting.errors.count, "error") %> prohibited this meeting from being saved:</h2>
+
+      <ul>
+        <% meeting.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.text_field :title, required: true, class:"form-control", placeholder:"Title" %>
+  </div>
+
+  <br>
+  <div>
+    <%= form.text_area :description, required: true, class:"form-control", placeholder:"Description" %>
+  </div>
+
+  <br>
+  <div>
+    <%= form.datetime_field :start_time, required: true, class:"form-control", placeholder:"Start Time"%>
+  </div>
+
+  <br>
+  <div>
+    <%= form.datetime_field :end_time, required: true, class:"form-control", placeholder:"End Time"%>
+  </div>
+
+  <br>
+  <div>
+    <%= form.text_field :meeting_location, required: true, class:"form-control", placeholder:"Meeting location" %>
+  </div>
+
+  <br>
+  <div>
+    <%= form.text_field :meeting_online_link, required: true, class:"form-control", placeholder:"Meeting online link" %>
+  </div>
+
+
+
+  <br>
+  <div>
+    <%= form.submit class:"btn btn-secondary" %>
+  </div>
+<% end %>
