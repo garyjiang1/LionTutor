@@ -1,7 +1,3 @@
-For our team, we are running our project on **Mac OS**.
-Please grade the **main** branch for **proj-launch**
-
-
 ## Run locally
 First, we need to install the correct ruby environment
 
