@@ -1,0 +1,40 @@
+<p style="color: green"><%= notice %></p>
+<h1> <FONT COLOR= "#012169"> Enter Booking Information</h1>
+<br>
+<!--<h3> <FONT COLOR= "#012169"> Add Tutor Availability </h3>-->
+
+  <%= render "form", meeting: @meeting %>
+
+  <br>
+  <br>
+
+<!--  <h3> <FONT COLOR= "#012169"> Available Meetings </h3>-->
+<!--  <div id="meetings">-->
+  <%# @meetings.each do |meeting| %>
+    <%#= render meeting %>
+<!--    <p>-->
+      <%#= link_to "Meeting Changes", tutor_meetings_path(meeting), class:"btn btn-secondary"%>
+<!--    </p>-->
+  <%# end %>
+<!--</div>-->
+
+  <br>
+  <br>
+
+<!--  <h3> <FONT COLOR= "#012169"> Booked Meetings </h3>-->
+<!--  <div class="container mt-5 text-center">-->
+  <%#= month_calendar(events: @meetings) do |date, meetings| %>
+<!--    <div class="day">-->
+      <%#= date.day %>
+      <%# meetings.each do |meeting| %>
+<!--        <div class="card-header">-->
+            <%#= link_to (meeting.title), tutor_meetings_path(meeting) %>
+<!--        </div>-->
+<!--    </div>-->
+
+    <%# end %>
+  <%# end %>
+<!--      </div>-->
+<div>
+  <%= link_to "Back to Tutors", tutor_path(@tutor), class:"btn btn-secondary"%>
+</div>

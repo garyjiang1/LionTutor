@@ -1,0 +1,13 @@
+<h3> <FONT COLOR= "#012169"> Meetings </h3>
+<div class="container mt-5 text-center">
+  <%= month_calendar(events: @meetings) do |date, meetings| %>
+    <div class="day">
+      <%= date.day %>
+      <% meetings.each do |meeting| %>
+        <div class="card-header">
+          <%= link_to meeting.title, tutor_meetings_path(meeting) %>
+        </div>
+        </div>
+      <% end %>
+  <% end %>
+</div>

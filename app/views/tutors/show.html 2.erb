@@ -1,0 +1,94 @@
+<p style="color: green"><%= notice %></p>
+
+
+<div class="jumbotron">
+  <h1 class="display-4">
+    <%= @tutor.first_name %>
+    <%= @tutor.last_name %>
+  </h1>
+  <p class="lead">
+    <%= @tutor.email %> | 
+    <%= @tutor.phone %> |
+    <%= @tutor.bio %> 
+  </p>
+  <% sum = 0 %>
+  <% length = 0 %>
+  <% if !@reviews.blank? %>
+  <% @reviews.each do |review| %>
+    <% sum+=review.rating %>
+    <% length+=1 %>
+    <% end %>
+  <% res = sum / length %>
+  <strong> Average Rating (1-poor, 5-excellent): <%= res %> </strong>
+  <% end %>
+  <p>  
+  
+  <div class = "col-md-7 col-md-offset-1">
+    <h1 class = "review_title"> </h1>
+    <% if @reviews.blank? %>
+      <strong> No reviews for this tutor just yet. Be the first to add one! </strong> 
+    <% else %>
+      <strong> Existing reviews for this tutor: </strong> 
+      <% @reviews.each do |review| %>
+      <div class= "reviews">
+        <p> Rating: <%= review.rating %> </p>
+        <p> Comment: <%= review.comment %> </p>
+      </div>
+      <% end %>
+    <% end %>
+  </div>
+<br> </br>
+
+<script>
+$(document).ready(function() {
+    $('.star-rating').raty({
+      path: '/assets/',
+      readOnly: true,
+      score: function(){
+        return $(this).attr('data-score')
+      }
+});
+</div>
+</script> 
+
+  <div>
+    <% if @tutor.email == current_user.email %>
+      <%= link_to "Edit my profile", edit_tutor_path(@tutor), class:"btn btn-secondary" %>
+    <% end %>
+
+    
+
+    <% if @tutor.email != current_user.email %>
+      <%= link_to "Write a Review", new_tutor_review_path(@tutor), class:"btn btn-dark" %>
+    <% end %>
+
+
+    <% if @tutor.email == current_user.email %>
+      <%= link_to "Add my availability", new_tutor_meeting_path(@tutor), class:"btn btn-dark" %>
+    <% end %>
+    <%= link_to "Back to tutors", tutors_path, class:"btn btn-dark" %>
+    
+    <br>
+    <br>
+    <% if @tutor.email == current_user.email %>
+      <%= button_to "Delete me from tutor", @tutor,  method: :delete, class:"btn btn-danger" %>
+    <% end %>
+   
+  </div>
+
+  <br>
+  <hr class="my-4">
+  <strong >My Calendar:</strong>
+  <div class="container mt-5 text-center">
+          <%= month_calendar(events: @tutor.meetings) do |date, meetings| %>
+                  <div class="day">
+                    <%= date.day %>
+                      <% meetings.each do |meetings| %>
+                      <div class="card-header">
+                          <%= link_to meetings.title, tutor_meeting_path(@tutor, meetings) %>
+                      </div>
+                  </div>
+                    <% end %>
+          <% end %>
+  </div>
+</div>

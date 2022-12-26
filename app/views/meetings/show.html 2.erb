@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @meeting %>
+
+<div>
+  <% if @tutor.email == current_user.email %>
+    <%= link_to "Edit this meeting", edit_tutor_meeting_path(@tutor, @meeting), class:"btn btn-secondary"%>
+  <% end %>
+  <%= link_to "Back to tutor profile", @tutor, class:"btn btn-dark" %>
+  <br>
+  <br>
+  <% if @tutor.email == current_user.email %>
+    <%= button_to "Delete this meeting", tutor_meeting_path(@tutor, @meeting), method: :delete, class:"btn btn-secondary" %>
+  <% end %>
+</div>
