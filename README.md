@@ -42,7 +42,7 @@ Alternatively, if you would like to see coverage by lines run `rails spec`
 ## Heroku Link
 https://blooming-reef-86407.herokuapp.com/
 
-## Github Link
+## Original Github Link
 https://github.com/Monirul1/COMSW4152_lion_tutor
 
 ## Contributors 🥒
